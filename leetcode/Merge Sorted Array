@@ -1,0 +1,30 @@
+arr1=[1,2,3]
+arr2=[2,5,6]
+m=len(arr1)
+n=len(arr2)
+z=m+n
+a=0
+b=0
+final=[]
+for i in range(z):
+    if a<(m) and b<(n) and arr1[a]<=arr2[b]:
+        final.append(arr1[a])
+        print("a",a,final)
+        a+=1
+        
+    elif a<(m) and b<(n) and arr1[a]>arr2[b]:
+        final.append(arr2[b])
+        print("b",b,final)
+        b+=1
+        
+
+    elif a==m:
+        for j in range(b,n):
+            final.append(arr2[j])
+        break
+        
+    elif b==():
+        for l in range(a,m):
+            final.append(arr1[l])
+        break
+print(final)        
