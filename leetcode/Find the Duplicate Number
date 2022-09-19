@@ -1,0 +1,20 @@
+arr=nums
+s=set(arr)
+print(s)
+final_arr=list(s)
+print(final_arr)
+#final_arr=[1, 2, 3, 4]
+k=[]
+for i in range(len(final_arr)):
+    k.append(0)
+print(k)
+for i in arr:
+    m=final_arr.index(i)
+    k[m]+=1
+print(k)
+z=0
+for c in k:
+    if c>1:
+        z=k.index(c)
+    #print(z)
+print(final_arr[z])
