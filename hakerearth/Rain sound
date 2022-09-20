@@ -1,0 +1,14 @@
+t= int(input())
+for _ in range(t):
+    l,r,s=map(int,input().split())
+    if l%s==0:
+        min=(l//s)
+       
+    else:
+        min=(l//s)+1
+        
+    max=r//s
+    if min<=max:
+        print(min,max)
+    else:
+        print(-1,-1)
