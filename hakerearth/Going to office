@@ -1,0 +1,9 @@
+d=int(input())
+oc,of,od=map(int,input().split())
+cs,cb,cm,cd=map(int,input().split())
+online=(oc+(d-of)*od)
+offline=cb+((d//cs)*cm)+(d*cd)
+if online<=offline:
+    print("Online Taxi")
+else:
+    print("Classic Taxi")
