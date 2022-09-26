@@ -1,0 +1,11 @@
+s=int(input())
+t=str(s)
+leng=len(t)
+count=0
+for i in t:
+    if i=='6':
+        count+=1
+if t[-1]=='6':
+    print(-1)
+else:
+    print(leng-count)
