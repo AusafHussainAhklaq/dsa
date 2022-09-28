@@ -1,0 +1,22 @@
+import math
+t=int(input()) #number of test case
+
+for i in range(t):
+        n=int(input()) # size of an array
+        arr=list(map(int,(input().split())))
+        cnt=[0]*32
+        ans=1
+        mmax=max(arr)
+        bits=int((math.log(mmax) / math.log(2)) + 1)
+        def calc(m):
+                for i in range(bits):
+                        if (m & (1<<i))!=0:
+                                cnt[i]+=1
+        for no in arr:
+                calc(no)
+        for i in range(bits):
+                if cnt[i]==0 or cnt[i]==n:
+                        continue
+                else:
+                        ans *= 2
+        print(ans)
