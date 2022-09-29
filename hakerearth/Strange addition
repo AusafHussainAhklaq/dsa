@@ -1,0 +1,7 @@
+t=int(input())
+for _ in range(t):
+    a,b=input().split()
+    a1=int(a[::-1].strip("0"))
+    b1=int(b[::-1].strip("0"))
+    sum=(str(a1+b1)[::-1]).strip("0")
+    print(sum)
