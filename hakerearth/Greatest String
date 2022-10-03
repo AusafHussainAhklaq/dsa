@@ -1,0 +1,22 @@
+vowel=['a','e','i','o','u']
+t=int(input())
+for _ in range(t):
+    st=input()
+    q=int(input())
+    temp=1
+    for  i in range(len(st)):
+        if st[i] in vowel and temp<=q:
+            temp+=1
+            if st[i]=='a':
+                print('b',end='')
+            if st[i]=='e':
+                print('f',end='')
+            if st[i]=='i':
+                print('j',end='')
+            if st[i]=='o':
+                print('p',end='')
+            if st[i]=='u':
+                print('v',end='')
+        else:
+            print(st[i],end='')
+    print()
