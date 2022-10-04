@@ -1,0 +1,10 @@
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    arr=list(map(int,input().split()))
+    tot_min=9999999999999999
+    for i in range(n-1):
+        new_min=arr[i]+arr[i+1]
+        if tot_min>new_min:
+            tot_min=new_min
+    print(tot_min)
