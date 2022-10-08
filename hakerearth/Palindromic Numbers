@@ -1,0 +1,14 @@
+for _ in range(int(input())):
+    a,b=map(int,input().split())
+    count=0
+    dis=b-a
+    if dis>0:
+        for i in range(a,b+1):
+            st=str(i)
+            if st==st[::-1]:
+                count+=1
+    else:
+        st1=str(a)
+        if st1==st1[::-1]:
+            count+=1
+    print(count)
