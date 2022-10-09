@@ -1,0 +1,20 @@
+st=input()
+count0=0
+count1=0
+for i in range(len(st)):
+    if st[i]=='1':
+        count1+=1
+        if count1>=6:
+            print("Sorry, sorry!")
+            break
+    else:
+        count1=0
+    if st[i]=='0':
+        count0+=1
+        if count0>=6:
+            print("Sorry, sorry!")
+            break
+    else:
+        count0=0
+    if i==(len(st)-1):
+        print('Good luck!')
