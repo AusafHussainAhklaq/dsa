@@ -1,0 +1,10 @@
+for _ in range(int(input())):
+    z=input()
+    if z==z[::-1]:
+        print('Palindrome')
+    else:
+        count=1
+        for i in z:
+            m=(ord(i)-96)
+            count=count*m
+        print(count)
