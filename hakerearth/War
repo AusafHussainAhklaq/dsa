@@ -1,0 +1,12 @@
+for _ in range(int(input())):
+    n=int(input())
+    b=list(map(int,input().split()))
+    a=list(map(int,input().split()))
+    bob_max=max(b)
+    alice_max=max(a)
+    if bob_max==alice_max:
+        print("Tie")
+    if alice_max>bob_max:
+        print("Alice")
+    if bob_max>alice_max:
+        print("Bob")
