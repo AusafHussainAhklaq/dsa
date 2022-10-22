@@ -1,0 +1,21 @@
+n=int(input())
+dom=list(map(int,input().split()))
+brian=list(map(int,input().split()))
+do=0
+for i in range(1,len(dom)):
+    m=abs(dom[i]-dom[i-1])
+    if m>do:
+        do=m
+br=0
+for i in range(1,len(brian)):
+    m=abs(brian[i]-brian[i-1])
+    if m>br:
+        br=m
+if do==br:
+    print("Tie")
+if do>br:
+    print("Dom")
+    print(do)
+if br>do:
+    print("Brian")
+    print(br)
