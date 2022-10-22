@@ -1,0 +1,12 @@
+for _ in range(int(input())):
+    s=input()
+    count=0
+    le=len(s)
+    tag=0
+    for i in range(le):
+        if s[i]=='a' or s[i]=='z':
+            count+=(tag+1)*(le-i)
+            tag=0
+        else:
+            tag+=1
+    print(count)
