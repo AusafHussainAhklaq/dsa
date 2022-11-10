@@ -1,0 +1,15 @@
+class Solution:
+    def subarraySum(self, arr: List[int], k: int) -> int:
+        di={0:1}
+        sum=0
+        count=0
+        for i in range(len(arr)):
+            sum+=arr[i]
+            if (sum-k) in di:
+                count=count+di[sum-k]
+            if sum not in di:
+                di[sum]=1
+            else:
+                di[sum]+=1
+        return count
+        
