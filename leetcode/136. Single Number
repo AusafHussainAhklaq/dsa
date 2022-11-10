@@ -1,0 +1,6 @@
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        re=0
+        for i in nums:
+            re=re^i
+        return re
