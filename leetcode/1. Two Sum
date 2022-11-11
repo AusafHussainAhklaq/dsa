@@ -1,0 +1,10 @@
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        arr=nums
+        di={}
+        for i in range(len(arr)):
+            if target-arr[i] in di:
+                return(di[target-arr[i]],i)
+            if target-arr[i] not in di:
+                di[arr[i]]=i
+        
