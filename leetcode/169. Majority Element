@@ -1,0 +1,23 @@
+class Solution:
+    def majorityElement(self, arr: List[int]) -> int:
+        n=len(arr)
+        candiate=None
+        vote=0
+        for i in range(n):
+            if vote==0:
+                candidate=arr[i]
+                vote=1
+            else:
+                if arr[i]==candidate:
+                    vote+=1
+                else:
+                    vote-=1
+        count=0
+        for i in range(n):
+            if arr[i]==candidate:
+                count+=1
+        
+        if count>(n//2):
+            return(candidate)
+        else:
+            return(-1)
