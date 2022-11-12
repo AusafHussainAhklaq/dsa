@@ -1,0 +1,13 @@
+class Solution:
+    def maxSubArray(self, a: List[int]) -> int:
+        n=len(a)
+        maxx = -maxsize -1
+        summ = 0
+        for i in range(0, n):
+            summ += a[i]
+            if maxx < summ:
+                maxx = summ
+            if summ < 0:
+                summ = 0
+        return maxx
+        
