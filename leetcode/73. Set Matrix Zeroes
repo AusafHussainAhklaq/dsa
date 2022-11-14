@@ -1,0 +1,16 @@
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        x=len(matrix)
+        y=len(matrix[0])
+        i_arr=[]
+        j_arr=[]
+        for i in range(x):
+            for j in range(y):
+                if matrix[i][j]==0:
+                    i_arr.append(i)
+                    j_arr.append(j)
+        for m in range(x):
+            for n in range(y):
+                if m in i_arr or n in j_arr:
+                    matrix[m][n]=0
+        print(matrix)
