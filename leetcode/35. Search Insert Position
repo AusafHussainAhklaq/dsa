@@ -1,0 +1,37 @@
+class Solution:
+    def searchInsert(self, arr: List[int], K: int) -> int:
+        l=0
+        h=len(arr)-1
+        tag=-1
+        if K>arr[h]:
+            tag=h+1
+            return tag
+        if K<arr[0]:
+            tag=0
+            return tag
+        while l<=h:
+            mid=(l+h)//2
+            if K>arr[h]:
+                tag=h
+                break
+            elif arr[mid]==K:
+                tag=arr.index(K)
+                break
+            elif arr[mid]>K:
+                if arr[mid-1]==K:
+                    tag=arr.index(arr[mid-1])
+                    break
+                elif arr[mid-1]<K:
+                    tag=arr.index(arr[mid])
+                    break
+                    
+                else:
+                    h=mid-1
+            elif arr[mid]<K:
+                if arr[mid+1]>K:
+                    tag=arr.index(arr[mid+1])
+                    break
+                else:
+                    l=mid+1
+        return tag
+        
