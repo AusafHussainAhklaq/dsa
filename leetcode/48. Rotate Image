@@ -1,0 +1,11 @@
+class Solution:
+    def rotate(self, mat: List[List[int]]) -> None:
+        m=len(mat)
+        n=len(mat[0])
+        arr=[[None for i in range(n)] for i in range(m)]
+        for i in range(m):
+            for j in range(n):
+                arr[j][n-i-1]=mat[i][j]
+        for i in range(m):
+            for j in range(n):
+                mat[i][j]=arr[i][j]
