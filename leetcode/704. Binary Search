@@ -1,0 +1,14 @@
+class Solution:
+    def search(self, arr: List[int], K: int) -> int:
+        l=0
+        h=len(arr)-1
+        tag=-1
+        while l<=h:
+            mid=(l+h)//2
+            if arr[mid]==K:
+                tag=arr.index(K)
+            if arr[mid]>K:
+                h=mid-1
+            else:
+                l=mid+1
+        return(tag)
