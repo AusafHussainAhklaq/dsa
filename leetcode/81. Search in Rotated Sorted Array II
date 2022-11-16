@@ -1,0 +1,26 @@
+class Solution:
+    def search(self, arr: List[int], k: int) -> bool:
+        l=0
+        h=len(arr)-1
+        tag=False
+        while l<=h:
+            while l<h and arr[l] == arr[l+1]:
+                l+=1
+            while l<h and arr[h] == arr[h-1]:
+                h-=1
+            mid=(l+h)//2
+            if arr[mid]==k:
+                tag=True
+                break
+            elif arr[l]<=arr[mid]:
+                if arr[l]<=k<=arr[mid]:
+                    h=mid-1
+                else:
+                    l=mid+1
+            else:
+                if arr[mid]<=k<=arr[h]:
+                    l=mid+1
+                else:
+                    h=mid-1
+        return(tag)
+        
