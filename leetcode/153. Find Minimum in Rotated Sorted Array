@@ -1,0 +1,20 @@
+class Solution:
+    def findMin(self, arr: List[int]) -> int:
+        l=0
+        h=len(arr)-1
+        if len(arr)==1:
+            return arr[l]
+        while l<=h:
+            mid=(l+h)>>1
+            if arr[h]<arr[h-1] and arr[h]<arr[l]:
+                return(arr[h])
+            if arr[l]<arr[l+1] and arr[l]<arr[h]:
+                return(arr[l])
+                break
+            if (arr[mid-1]>arr[mid]) and arr[mid+1]>arr[mid]:
+                return(arr[mid])
+
+            elif arr[mid]>arr[h]:
+                l=mid+1
+            else:
+                h=mid-1
