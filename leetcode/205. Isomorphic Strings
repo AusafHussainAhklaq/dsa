@@ -1,0 +1,19 @@
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        dt={}
+        tag=0
+        for i in range(len(s)):
+            if s[i] not in dt:
+                if t[i] not in dt.values():
+                    dt[s[i]]=t[i]
+                else:
+                    dt[s[i]]=None
+        for i in range(len(s)):
+            if s[i] in dt.keys():
+                if t[i]!=dt[s[i]]:
+                    tag=1
+                    break
+        if tag==1:
+            return False
+        else:
+            return True
