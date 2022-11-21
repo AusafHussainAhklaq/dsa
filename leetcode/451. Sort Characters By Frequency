@@ -1,0 +1,17 @@
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        dt={}
+        for i in s:
+            if i in dt:
+                dt[i]+=1
+            else:
+                dt[i]=1
+        m=list(set(list(dt.values())))
+        m.sort(reverse=True)
+        data=list(set(list(s)))
+        res=""
+        for i in m:
+            for key , value in dt.items():
+                if value==i:
+                    res+=key*i
+        return(res)
