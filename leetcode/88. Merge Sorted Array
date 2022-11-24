@@ -1,0 +1,33 @@
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        temp=[None for i in range(m+n)]
+        i=0
+        j=0
+        k=0
+        while i<m and j<n:
+            if nums1[i]<nums2[j]:
+                temp[k]=nums1[i]
+                k+=1
+                i+=1
+            elif nums1[i]>nums2[j]:
+                temp[k]=nums2[j]
+                k+=1
+                j+=1
+            elif nums1[i]==nums2[j]:
+                temp[k]=nums1[i]
+                temp[k+1]=nums2[j]
+                k+=2
+                j+=1
+                i+=1
+        while i<m:
+            temp[k]=nums1[i]
+            k+=1
+            i+=1
+        while j<n:
+            temp[k]=nums2[j]
+            k+=1
+            j+=1
+        nums1.clear()
+        for i in range(len(temp)):
+            nums1.append(temp[i])
+            
