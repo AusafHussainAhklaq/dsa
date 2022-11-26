@@ -1,0 +1,11 @@
+class Solution:
+    def distributeCandies(self, candyType: List[int]) -> int:
+        possible=len(candyType)//2
+        dt={}
+        for i in candyType:
+            if i in dt:
+                dt[i]+=1
+            else:
+                dt[i]=1
+
+        return(min(len(dt.keys()),possible))
