@@ -1,0 +1,6 @@
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        m=s[::-1]
+        for i in range(len(m)):
+            s[i]=m[i]
+        return s
