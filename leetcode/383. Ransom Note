@@ -1,0 +1,16 @@
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        return not Counter(ransomNote) - Counter(magazine)
+        
+'''
+        arr1=list(ransomNote)
+        arr2=list(magazine)
+        tag=True
+        for i in arr1:
+            if i not in arr2:
+                tag=False
+            elif i in arr2 :
+                arr2.remove(i)
+        return tag
+'''
+        
