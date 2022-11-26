@@ -1,0 +1,15 @@
+class Solution:
+    def findLHS(self,arr: List[int]) -> int:
+        arr.sort()
+        dt={}
+        for i in arr:
+            if i in dt:
+                dt[i]+=1
+            else:
+                dt[i]=1
+        m=list(dt.keys())
+        maximum=0
+        for i in range(len(m)-1):
+            if m[i+1]-m[i]==1:
+                maximum=max(dt[m[i]]+dt[m[i+1]],maximum)
+        return(maximum)
