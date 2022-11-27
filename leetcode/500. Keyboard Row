@@ -1,0 +1,29 @@
+class Solution:
+    def findWords(self, words: List[str]) -> List[str]:
+        Q="qwertyuiop"
+        A="asdfghjkl"
+        Z="zxcvbnm"
+        temp=[]
+        for i in words:
+            z=0
+            for k in i:
+                z+=1
+                if k.lower() not in A:
+                    break
+                if z==len(i):
+                    temp.append(i)
+            y=0
+            for k in i:
+                y+=1
+                if k.lower() not in Q:
+                    break
+                if y==len(i):
+                    temp.append(i)
+            x=0
+            for k in i:
+                x+=1
+                if k.lower() not in Z:
+                    break
+                if x==len(i):
+                    temp.append(i)
+        return (temp)
