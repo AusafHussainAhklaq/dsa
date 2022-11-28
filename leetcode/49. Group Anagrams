@@ -1,0 +1,19 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        a=0
+        dt={}
+        for i in strs:
+            m=list(i)
+            m.sort()
+            k="".join(m)
+            if k not in dt:
+                dt[k]=a
+                a+=1
+        temp=[[] for i in range(a)]
+        for i in strs:
+            m=list(i)
+            m.sort()
+            k="".join(m)
+            index=dt[k]
+            temp[index].append(i)
+        return(temp)
