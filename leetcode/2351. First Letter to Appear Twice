@@ -1,0 +1,10 @@
+class Solution:
+    def repeatedCharacter(self, s: str) -> str:
+        dt={}
+        for i in s:
+            if i in dt:
+                dt[i]+=1
+                if dt[i]==2:
+                    return(i)
+            else:
+                dt[i]=1
