@@ -1,0 +1,14 @@
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        dt={}
+        for i in s:
+            if i in dt:
+                dt[i]+=1
+            else:
+                dt[i]=1
+        tag=-1
+        for i,j in dt.items():
+            if j==1:
+                tag=s.index(i)
+                break
+        return(tag)
