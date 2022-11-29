@@ -1,0 +1,17 @@
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        if len(s)>len(t):
+            return False
+        else:
+            m,n=0,0
+            for i in range(len(t)):
+                if m<len(s) and n<len(t):
+                    if s[m]==t[n]:
+                        m+=1
+                        n+=1
+                    else:
+                        n+=1  
+            if m==len(s):
+                return True
+            else:
+                return False
