@@ -1,0 +1,43 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def getlen(self,head):
+        a=head
+        count=0
+        while a:
+            a=a.next
+            count+=1
+        return count
+            
+    def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head.next:
+            return head.next
+        fast, slow = head.next.next, head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        slow.next = slow.next.next
+        return head
+        
+        
+'''
+        slow=head
+        fast=head
+        m=self.getlen(head)
+        if m==1:
+            return None
+        if m%2!=0:
+            for i in range((m//2)-1):
+                slow=slow.next
+            slow.next=slow.next.next
+        if m%2==0:
+            for i in range((m//2)-1):
+                slow=slow.next
+            slow.next=slow.next.next
+        return head
+'''
+            
+        
