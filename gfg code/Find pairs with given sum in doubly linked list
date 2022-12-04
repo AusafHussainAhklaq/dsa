@@ -1,0 +1,17 @@
+class Solution:
+    def findPairsWithGivenSum(self, target : int, head : Optional['Node']) -> List[List[int]]:
+        last=head
+        curr=head
+        l=[]
+        while last.next!=None:
+            last=last.next
+        while curr!=last:
+            tmp=curr.data+last.data
+            if tmp==target:
+                l.append([curr.data,last.data])
+            if tmp>target: 
+                last=last.prev
+            else:
+                curr=curr.next
+        return l
+        
