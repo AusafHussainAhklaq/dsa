@@ -1,0 +1,23 @@
+
+class Solution:
+    def findIntersection(self, head1, head2):
+        dt={}
+        a=head1
+        b=head2
+        start=temp=Node(None)
+        while b:
+            if b.data not in dt:
+                dt[b.data]=True
+            b=b.next
+        while a:
+            if a.data in dt:
+                if temp.next is None:
+                    nd=Node(a.data)
+                    temp.next=nd
+                    temp=temp.next
+                else:
+                    nd=Node(a.data)
+                    temp.next=nd
+                    temp=temp.next
+            a=a.next
+        return start.next
