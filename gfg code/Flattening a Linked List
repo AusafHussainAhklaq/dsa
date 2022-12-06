@@ -1,0 +1,31 @@
+def mergell(head1,head2):
+    hf=None
+    ht=None
+    while head1!=None and head2!=None:
+        if hf==None:
+            if head1.data<head2.data:
+                hf=head1
+                ht=head1
+                head1=head1.bottom
+            else:
+                ht=head2
+                hf=head2
+                head2=head2.bottom
+        else:
+            if head1.data<head2.data:
+                ht.bottom=head1
+                ht=ht.bottom
+                head1=head1.bottom
+            else:
+                ht.bottom=head2
+                ht=ht.bottom
+                head2=head2.bottom
+    if head1!=None:
+        ht.bottom=head1
+    if head2!=None:
+        ht.bottom=head2
+    return hf
+def flatten(root):
+    if root==None or root.next==None:
+        return root
+    return mergell(root,flatten(root.next))
