@@ -1,0 +1,14 @@
+class Solution:
+    def dominantIndex(self, nums: List[int]) -> int:
+        tag=-1
+        first_max=0
+        second_max=0
+        for i in nums:
+            if i> first_max:
+                second_max=first_max
+                first_max=i
+            elif i>second_max:
+                second_max=i
+        if first_max>=2*second_max:
+            tag=nums.index(first_max)
+        return tag
