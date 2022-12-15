@@ -1,0 +1,24 @@
+class Solution:
+    def thirdMax(self, nums: List[int]) -> int:
+        if len(set(nums))<3:
+            return max(nums)
+        first=float('-inf')
+        second=float('-inf')
+        third=float('-inf')
+        #arr=list(set(nums))
+        arr=nums
+        for i in range(len(arr)):
+            if arr[i-1]!=arr[i] and  arr[i]!=first and arr[i]!=second and arr[i]!=third:
+                if arr[i] > first:
+                    if first>second:
+                        if second > third:
+                            third=second
+                        second=first
+                    first=arr[i]
+                elif arr[i]>second:
+                    if second > third:
+                        third=second
+                    second=arr[i]
+                elif arr[i] > third:
+                        third=arr[i]
+        return(third)
