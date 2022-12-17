@@ -1,0 +1,16 @@
+class Solution:
+    def find(self,ind,arr,target,final,temp):
+        if ind==len(arr):
+            if target==0:
+                final.append(list(temp))
+            return
+        if arr[ind]<=target:
+            temp.append(arr[ind])
+            self.find(ind,arr,(target)-(arr[ind]),final,temp)
+            temp.pop()
+        self.find(ind+1,arr,target,final,temp)
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        temp=[]
+        final=[]
+        self.find(0,candidates,target,final,temp)
+        return final
