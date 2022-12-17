@@ -1,0 +1,17 @@
+class Solution:
+    def reformatDate(self, date: str) -> str:
+        table=["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        arr=date.split()
+        day=""
+        for i in arr[0]:
+            if i.isnumeric():
+                day+=i
+        if len(day)==1:
+            day='0'+day
+
+        m=str(table.index(arr[1])+1)
+        if len(m)==1:
+            m='0'+str(m)
+            
+        datee="{}-{}-{}".format(int(arr[2]),m,day)
+        return(datee)
