@@ -1,0 +1,23 @@
+class Solution:
+    def f(self,i,arr,temp,final,n):
+        if i>=n:
+            if len(temp)>0:
+                final.append(list(temp))
+            return 
+        temp.append(arr[i])
+        self.f(i+1,arr,temp,final,n)  
+        temp.pop()
+        self.f(i+1,arr,temp,final,n)
+	def AllPossibleStrings(self, s):
+	    temp=[]
+        final=[]
+        n=len(s)
+        arr=[]
+        for i in s:
+            arr.append(i)
+        self.f(0,arr,temp,final,n)
+        temp=[]
+        for i in final:
+            temp.append("".join(i))
+        
+        return sorted(temp)
