@@ -1,0 +1,17 @@
+class Solution:
+    def perm(self,ind,nums,ans):
+        if ind==len(nums):
+            ds=[]
+            for i in range(len(nums)):
+                ds.append(nums[i])
+            if list(ds) not in ans:
+                ans.append(list(ds))
+            return
+        for i in range(ind,len(nums)):
+            nums[ind],nums[i]=nums[i],nums[ind]
+            self.perm(ind+1,nums,ans)
+            nums[ind],nums[i]=nums[i],nums[ind]
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        ans=[]
+        self.perm(0,nums,ans)
+        return ans
