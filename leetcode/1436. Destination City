@@ -1,0 +1,13 @@
+class Solution:
+    def destCity(self, paths: List[List[str]]) -> str:
+        dt={}
+        for i in paths:
+            dt[i[0]]=i[1]
+        k=paths[0][0]
+        m=True
+        while m:
+            if k not in dt.keys():
+                m=False
+            else:
+                k=dt[k]
+        return k
