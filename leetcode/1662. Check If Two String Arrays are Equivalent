@@ -1,0 +1,8 @@
+class Solution:
+    def arrayStringsAreEqual(self, word1: List[str], word2: List[str]) -> bool:
+        m="".join(word1)
+        n="".join(word2)
+        if m==n:
+            return True
+        else:
+            return False
