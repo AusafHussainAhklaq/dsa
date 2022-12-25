@@ -1,0 +1,17 @@
+class Solution:
+    def interpret(self, command: str) -> str:
+        st=""
+        temp=""
+        for i in command:
+            if i=="(":
+                temp+=i
+            elif i==")":
+                if temp=="(":
+                    st+="o"
+                    temp=""
+                else:
+                    temp=""
+            elif i!="(" and i!=")":
+                st+=i
+                temp=""
+        return(st)
