@@ -1,0 +1,17 @@
+class Solution:
+    def diagonalSum(self, mat: List[List[int]]) -> int:
+        left=0
+        right=0
+
+        for i in range(len(mat)):
+            for j in range(len(mat[0])):
+                if i==j:
+                    left+=mat[i][j]
+                if i+j==len(mat)-1:
+                    right+=mat[i][j]
+                
+        if len(mat)%2==0:
+            return(left+right)
+        else:
+            res=left+right-(mat[len(mat)//2][len(mat)//2])
+            return(res)
