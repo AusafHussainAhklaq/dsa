@@ -1,0 +1,39 @@
+class Solution:
+    def getPermutation(self, n: int, k: int) -> str:
+        fact=1
+        number=[]
+        for i in range(1,n):
+            fact=fact*i
+            number.append(i)
+        number.append(n)
+        ans=''
+        k=k-1
+        while True:
+            ans=ans+str(number[k//fact])
+            number.remove(number[k//fact])
+            if len(number)==0:
+                break
+            k=k%fact
+            fact=fact//len(number)
+        return ans
+    '''
+    def perm(self,ind,nums,ans):
+        if ind==len(nums):
+            number=0
+            for i in range(len(nums)):
+                number=(number*10)+nums[i]
+            ans.append(number)
+            return
+        for i in range(ind,len(nums)):
+            nums[ind],nums[i]=nums[i],nums[ind]
+            self.perm(ind+1,nums,ans)
+            nums[ind],nums[i]=nums[i],nums[ind]
+    def getPermutation(self, n: int, k: int) -> str:
+        nums=[i for i in range(1,n+1)]
+        ans=[]
+        self.perm(0,nums,ans)
+        ans.sort()
+        print(ans[k-1])
+        return str(ans[k-1])
+    '''
+        
