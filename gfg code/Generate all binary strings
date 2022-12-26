@@ -1,0 +1,41 @@
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+# } Driver Code Ends
+#User function Template for python3
+
+class Solution:
+    def binary(self,i,n,ans,ds):
+        if i>=n:
+            st=""
+            for i in range(len(ds)):
+                st+=str(ds[i])
+            ans.append(st)
+            return
+        ds.append(0)
+        self.binary(i+1,n, ans,ds)
+        ds.pop()
+        if ds==[] or ds[-1]!=1:
+            ds.append(1)
+            self.binary(i+1,n,ans,ds)
+            ds.pop()
+    def generateBinaryStrings(self, n):
+        ds=[]
+        ans=[]
+        self.binary(0,n,ans,ds)
+        return(ans)
+
+#{ 
+ # Driver Code Starts.
+from sys import stdout
+if __name__ == '__main__': 
+    t = int(input ())
+    for _ in range (t):
+        N = int(input())
+        ob = Solution()
+        res = ob.generateBinaryStrings(N)
+        for binaryString in res:
+            print(binaryString, end = ' ')
+        print()
+# } Driver Code Ends
