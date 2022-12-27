@@ -1,0 +1,24 @@
+class Solution:
+    def binary(self,i,n,m,ans,ds,open,close):
+        if i>=m:
+            if open==close and ds[0]=="(" and ds[-1]==")":
+                ans.append(ds)
+            return
+        if open<n:
+            temp=ds
+            ds+="("
+            self.binary(i+1,n,m, ans,ds,open+1,close)
+            ds=temp
+        if close<n and close<open:
+            temp=ds
+            ds+=")"
+            self.binary(i+1,n,m,ans,ds,open,close+1)
+            ds=temp
+    def generateParenthesis(self, n: int) -> List[str]:
+        ds=""
+        ans=[]
+        m=n*2
+        open=0
+        close=0
+        self.binary(0,n,m,ans,ds,open,close)
+        return ans
