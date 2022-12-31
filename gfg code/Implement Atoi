@@ -1,0 +1,50 @@
+#User function template for Python
+
+class Solution:
+    def cal(self,i,st,ans):
+        if i>=len(st):
+            return
+        if not(ans)  and st[i]=="-":
+            ans.append(st[i])
+            self.cal(i+1,st,ans)
+        elif st[i].isdigit():
+            ans.append(st[i])
+            self.cal(i+1,st,ans)
+        else:
+            ans.clear()
+            ans.append("-1")
+            return
+    def atoi(self,st):
+        ans=[]
+        self.cal(0,st,ans)
+        m=(str("".join(ans)))
+        return m
+        
+        
+        
+        '''
+        s=""
+        for i in st:
+            if s=="" and i=="-":
+                s+=i
+            elif i.isdigit():
+                s+=i
+            else:
+                s="-1"
+                break
+        return s
+        # Code here
+        '''
+
+
+#{ 
+ # Driver Code Starts
+#Initial template for Python
+
+if __name__=='__main__':
+    t=int(input())
+    for i in range(t):
+        string = input().strip();
+        ob=Solution()
+        print(ob.atoi(string))
+# } Driver Code Ends
