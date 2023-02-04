@@ -1,0 +1,24 @@
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        mp = {}
+        for i, num in enumerate(nums1):
+            mp[num] = i
+        
+        st = [-1]
+        for num in reversed(nums2):
+            if num not in mp:
+                st.append(num)
+                continue
+            
+            if st[-1] >= num:
+                index = mp[num]
+                nums1[index] = st[-1]
+                st.append(num)
+            else:
+                while st[-1] != -1 and st[-1] <= num:
+                    st.pop()
+                index = mp[num]
+                nums1[index] = st[-1]
+                st.append(num)
+        
+        return nums1
