@@ -1,0 +1,127 @@
+#User function Template for python3
+
+# design the class in the most optimal way
+class Node:
+
+    def __init__(self,key,val):
+
+        # DLL NODE
+
+        self.key=key
+
+        self.val=val
+
+        self.prev=None
+
+        self.next=None
+
+class LRUCache:
+      
+    #Constructor for initializing the cache capacity with the given value.  
+    def __init__(self,cap):
+        #code here
+        self.cap=cap
+
+        self.cache={}
+
+        self.head=Node(-1,-1)
+
+        self.tail=Node(-1,-1)
+
+        self.head.next=self.tail
+
+        self.tail.prev=self.head
+    def insert(self,node):
+
+        temp=self.head.next
+
+        node.next=temp
+
+        node.prev=self.head
+
+        self.head.next=node
+
+        temp.prev=node
+
+        
+
+    def remove(self,node):
+
+        delprev=node.prev
+
+        delnext=node.next
+
+        delprev.next=delnext
+
+        delnext.prev=delprev
+        
+    #Function to return value corresponding to the key.
+    def get(self, key):
+        #code here
+        if key in self.cache: # key which wii be used wil be MRU
+
+            self.remove(self.cache[key]) # remove and insert at beginning because now it is MRU
+
+            self.insert(self.cache[key])
+
+            return self.cache[key].val 
+
+        return -1
+        
+        
+        
+    #Function for storing key-value pair.   
+    def set(self, key, value):
+        #code here
+        if key in self.cache: # update it 
+
+        # delete node and insert again at front with new value and it would become MRU
+
+            self.remove(self.cache[key])
+
+        self.cache[key]=Node(key,value)
+
+        self.insert(self.cache[key])
+
+        
+
+        if len(self.cache)>self.cap:
+
+            lru=self.tail.prev
+
+            self.remove(lru)
+
+            del self.cache[lru.key]
+        
+
+
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__':
+    test_cases = int(input())
+    for cases in range(test_cases):
+        cap = int(input())  # capacity of the cache
+        qry=int(input())  #number of queries
+        a = list(map(str, input().strip().split()))  # parent child info in list
+        
+        lru=LRUCache(cap)
+        
+       
+        i=0
+        q=1
+        while q<=qry:
+            qtyp=a[i]
+            
+            if qtyp=='SET':
+                lru.set(int(a[i+1]),int(a[i+2]))
+                i+=3
+            elif qtyp=='GET':
+                print(lru.get(int(a[i+1])),end=' ')
+                i+=2
+            q+=1
+        print()
+# } Driver Code Ends
