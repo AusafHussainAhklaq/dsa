@@ -1,0 +1,37 @@
+from collections import *
+import heapq as hq
+class Solution:
+	def topK(self, nums, k):
+	    arr=Counter(nums)
+        ke=list(arr.keys())
+        val=list(arr.values())
+        lst=[]
+        for i in range(len(ke)):
+         lst.append([val[i],ke[i]])
+        #  print(lst)
+        lst=sorted(lst,reverse=True)
+        #  print(lst)
+        ans=[]
+        for i in range(k):
+         ans.append(lst[i][1])
+        return ans
+		    
+		    
+
+
+#{ 
+ # Driver Code Starts
+		
+if __name__ == '__main__':
+    T=int(input())
+    for i in range(T):
+    	a = list(map(int, input().strip().split()))
+    	n = a[0]
+    	nums = a[1:]
+    	k = int(input().strip())
+    	obj = Solution()
+    	ans = obj.topK(nums, k)
+    	for i in ans:
+    		print(i, end = " ")
+    	print()
+# } Driver Code Ends
