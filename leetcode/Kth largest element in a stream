@@ -1,0 +1,34 @@
+#User function Template for python3
+import heapq
+class Solution:
+    def kthLargest(self, k, arr, n):
+        # code here 
+        temp, count, res = [], 0, []
+
+        for i in arr:
+            if count<k:
+                heapq.heappush(temp, i)
+                count+=1
+            elif count>=k and temp[0]<i:
+            #elif temp[0]<i:
+                heapq.heappop(temp)
+                heapq.heappush(temp, i)
+
+            if count<k: res.append(-1)
+            else: res.append(temp[0])
+
+        return res
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__': 
+    t = int (input ())
+    for _ in range (t):
+        k,n=map(int,input().split())
+        arr=list(map(int,input().split()))
+        
+        ob = Solution()
+        print(*ob.kthLargest(k,arr,n))
+# } Driver Code Ends
