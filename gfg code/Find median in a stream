@@ -1,0 +1,68 @@
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+import atexit
+import io
+import sys
+import heapq
+from collections import  defaultdict
+import math
+
+
+# } Driver Code Ends
+#User function Template for python3
+
+''' 
+use globals min_heap and max_heap, as per declared in driver code
+use heapify modules , already imported by driver code
+'''
+import heapq as hq
+class Solution:
+    def __init__(self):
+        self.small,self.large=[],[]
+    def balanceHeaps(self):
+        #Balance the two heaps size , such that difference is not more than one.
+        # code here
+        pass
+        
+        
+    '''    
+    You don't need to call getMedian it will be called itself by driver code
+    for more info see drivers code below.
+    '''
+    def getMedian(self):
+        if len(self.small)>len(self.large):
+            return -1*self.small[0]
+
+        if len(self.large)>len(self.small):
+            return self.large[0]
+        return ((-1*self.small[0])+self.large[0])/2
+        
+    def insertHeaps(self,num):
+        hq.heappush(self.small,-1*num)
+        if self.small and self.large and (-1*self.small[0])> self.large[0]:
+            val= (-1*hq.heappop(self.small))
+            hq.heappush(self.large,val)
+        if len(self.small)>len(self.large)+1:
+            val= (-1*hq.heappop(self.small))
+            hq.heappush(self.large,val)
+        if len(self.large)>len(self.small)+1:
+            val= (hq.heappop(self.large))
+            hq.heappush(self.small,-1*val)
+
+#{ 
+ # Driver Code Starts.
+
+if __name__ == '__main__':
+    t = int(input())
+    
+    for _ in range(t):
+        n = int(input())
+        ob=Solution()
+        for i in range(n):
+            x=int(input())
+            ob.insertHeaps(x)
+            print(math.floor(ob.getMedian()))
+
+# } Driver Code Ends
