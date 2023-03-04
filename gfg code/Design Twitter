@@ -1,0 +1,74 @@
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+# } Driver Code Ends
+#User function Template for python3
+from collections import *
+import heapq
+class Twitter:
+    # Compose a new tweet
+    def __init__(self):
+        self.count=0
+        self.tweetMap=defaultdict(list)
+        self.followMap= defaultdict(set)
+    def postTweet(self, userId: int, tweetId: int):
+        # Code here
+        self.tweetMap[userId].append([self.count,tweetId])
+        self.count-=1
+        
+    # Retrieve the 10 most recent tweet ids as mentioned in question
+    def getNewsFeed(self, userId: int):
+        # Code here
+        res=[]
+        minheap=[]
+        self.followMap[userId].add(userId)
+        for followeeId in self.followMap[userId]:
+            if followeeId in self.tweetMap:
+                index=len(self.tweetMap[followeeId])-1
+                count,tweetId=self.tweetMap[followeeId][index]
+                minheap.append([count,tweetId,followeeId,index-1])
+        heapq.heapify(minheap)
+        while minheap and len(res)<10:
+            count, tweetId, followeeId, index = heapq.heappop(minheap)
+            res.append(tweetId)
+            if index>=0:
+                count, tweetId =self.tweetMap[followeeId][index]
+                heapq.heappush(minheap,[count,tweetId,followeeId,index-1])
+        return res
+        
+    # Follower follows a followee. If the operation is invalid, it should be a no-op.
+    def follow(self, followerId: int, followeeId: int):
+        # Code here
+        self.followMap[followerId].add(followeeId)
+        
+    # Follower unfollows a followee. If the operation is invalid, it should be a no-op.
+    def unfollow(self, followerId: int, followeeId: int):
+        # Code here
+        if followeeId in self.followMap[followerId]:
+            self.followMap[followerId].remove(followeeId)
+
+
+#{ 
+ # Driver Code Starts.
+if __name__ == '__main__': 
+    obj = Twitter()
+    totalQueries = int(input ())
+    for _ in range (totalQueries):
+        query = list(map(int, input().split()))
+        if (query[0] == 1):
+            userId, tweetId = query[1], query[2]
+            obj.postTweet(userId, tweetId)
+        elif (query[0] == 2):
+            userId =  query[1]
+            vec = obj.getNewsFeed(userId)
+            for val in vec:
+                print(val, end = ' ')
+            print()
+        elif (query[0] == 3):
+            follower, followee = query[1], query[2]
+            obj.follow(follower, followee)
+        else:
+            follower, followee = query[1], query[2]
+            obj.unfollow(follower, followee)
+# } Driver Code Ends
