@@ -1,0 +1,43 @@
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+# } Driver Code Ends
+#User function Template for python3
+
+class Solution:
+    def lemonadeChange(self, N, bills):
+        # Code here
+        box=[]
+        for i in range(len(bills)):
+            if bills[i]==5:
+                box.append(5)
+            if bills[i]==10:
+                if 5 in box:
+                    box.remove(5)
+                    box.append(10)
+                else:
+                    return False
+            if bills[i]==20:
+                if 10 in box and 5 in box:
+                    box.remove(10)
+                    box.remove(5)
+                elif box.count(5)>=3:
+                    box.remove(5)
+                    box.remove(5)
+                    box.remove(5)
+                else:
+                    return False
+        return True
+
+#{ 
+ # Driver Code Starts.
+if __name__ == '__main__': 
+    t = int(input ())
+    for _ in range (t):
+        N = int(input())
+        bills = list(map(int, input().split()))
+        ob = Solution()
+        res = ob.lemonadeChange(N, bills)
+        print(res)
+# } Driver Code Ends
