@@ -1,0 +1,36 @@
+#User function Template for python3
+
+class Solution:
+    def pageFaults(self, N, C, pages):
+        # code here
+        cache=[-1]*C
+        count=0
+        for i in range(len(pages)):
+            if pages[i] not in cache:
+                
+                cache.pop(0)
+                cache.append(pages[i])
+                count+=1
+            else:
+                cache.remove(pages[i])
+                cache.append(pages[i])
+        return(count)
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__': 
+    t = int (input ())
+    for _ in range (t):
+        N = int(input())
+        pages = input().split()
+        for itr in range(N):
+            pages[itr] = int(pages[itr])
+        C = int(input())
+
+        ob = Solution()
+        print(ob.pageFaults(N, C, pages))
+
+# } Driver Code Ends
