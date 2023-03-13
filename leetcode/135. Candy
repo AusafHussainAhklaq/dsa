@@ -1,0 +1,15 @@
+class Solution:
+    def candy(self, arr: List[int]) -> int:
+        n=len(arr)
+        left=[1]*n
+        right=[1]*n
+        for i in range(1,len(arr)):
+            if arr[i-1]<arr[i]:
+                left[i]+=left[i-1]
+        for i in range(len(arr)-2,-1,-1):
+            if arr[i]>arr[i+1]:
+                right[i]+=right[i+1]
+        total=0
+        for i in range(len(arr)):
+            total+=max(left[i],right[i])
+        return(total)
