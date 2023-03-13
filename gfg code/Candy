@@ -1,0 +1,35 @@
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+# } Driver Code Ends
+#User function Template for python3
+
+class Solution:
+    def minCandy(self, N, arr):
+        # Code here
+        n=len(arr)
+        left=[1]*n
+        right=[1]*n
+        for i in range(1,len(arr)):
+            if arr[i-1]<arr[i]:
+                left[i]+=left[i-1]
+        for i in range(len(arr)-2,-1,-1):
+            if arr[i]>arr[i+1]:
+                right[i]+=right[i+1]
+        total=0
+        for i in range(len(arr)):
+            total+=max(left[i],right[i])
+        return(total)
+
+#{ 
+ # Driver Code Starts.
+if __name__ == '__main__': 
+    t = int(input ())
+    for _ in range (t):
+        N = int(input())
+        ratings = list(map(int, input().split()))
+        ob = Solution()
+        res = ob.minCandy(N, ratings)
+        print(res)
+# } Driver Code Ends
