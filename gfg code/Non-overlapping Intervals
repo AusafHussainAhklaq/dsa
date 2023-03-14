@@ -1,0 +1,32 @@
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+# } Driver Code Ends
+#User function Template for python3
+
+class Solution:
+    def minRemoval(self, N, intervals):
+        # Code here
+        intervals.sort()
+        res=0
+        prevend=intervals[0][1]
+        for start,end in intervals[1:]:
+            if start>=prevend:
+                prevend=end
+            else:
+                res+=1
+                prevend=min(end,prevend)
+        return res
+
+#{ 
+ # Driver Code Starts.
+if __name__ == '__main__': 
+    t = int(input ())
+    for _ in range (t):
+        N = int(input())
+        intervals = [list(map(int, input().split())) for i in range(N)]
+        ob = Solution()
+        res = ob.minRemoval(N, intervals)
+        print(res)
+# } Driver Code Ends
