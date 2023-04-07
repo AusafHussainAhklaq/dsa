@@ -1,0 +1,37 @@
+#User function Template for python3
+
+from typing import List
+import math
+class Solution:
+    def makeBeautiful(self, arr: List[int]) -> List[int]:
+        # code here
+        i=0
+        while True:
+            if len(arr)==0 or len(arr)==1 or i>len(arr)-2:
+                break
+            if math.copysign(1, arr[i])!=math.copysign(1, arr[i+1]) :
+                arr.pop(i)
+                arr.pop(i)
+                if i!=0:
+                    i-=1
+            else:
+                i+=1
+        return arr
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+if __name__=="__main__":
+    t = int(input())
+    for _ in range(t):
+        
+        n = int(input())
+        
+        arr = list(map(int,input().split()))
+        
+        obj = Solution()
+        res = obj.makeBeautiful(arr)
+        print(*res)
+# } Driver Code Ends
