@@ -1,0 +1,36 @@
+#User function Template for python3
+
+class Solution:
+    def dfsRec(self,adj,s,visited,ans):
+        visited[s]=True
+        ans.append(s)
+        for j in adj[s]:
+            if visited[j]==False:
+                self.dfsRec(adj,j,visited,ans)
+    #Function to return a list containing the DFS traversal of the graph.
+    def dfsOfGraph(self, V, adj):
+        ans=[]
+        visited=[False]*V
+        for i in range(1):
+            if (visited[i]==False):
+                self.dfsRec(adj,i,visited,ans)
+        return ans
+
+#{ 
+ # Driver Code Starts
+if __name__ == '__main__':
+    T=int(input())
+    while T>0:
+        V,E=map(int,input().split())
+        adj=[[] for i in range(V+1)]
+        for i in range(E):
+            u,v=map(int,input().split())
+            adj[u].append(v)
+            adj[v].append(u)
+        ob=Solution()
+        ans=ob.dfsOfGraph(V,adj)
+        for i in range(len(ans)):
+            print(ans[i],end=" ")
+        print()
+        T-=1
+# } Driver Code Ends
